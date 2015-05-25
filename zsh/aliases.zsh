@@ -1,4 +1,4 @@
-# Reload ZSH config.
+# Reload zsh config.
 alias reload="source $HOME/.zshrc"
 
 # Enable aliases to be sudo’ed.

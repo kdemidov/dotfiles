@@ -43,17 +43,20 @@ export EDITOR=vim
 export VISUAL=$EDITOR
 export PAGER=less
 
-#
-# Less
-#
-
 # Set the default Less options.
 # Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
 # Remove -X and -F (exit if the content fits on one screen) to enable it.
 export LESS='-F -g -i -M -R -S -w -X -z-4'
+
+# Highlight section titles in manual pages.
+export LESS_TERMCAP_md=$'\e[1;36m'
 
 # Set DEFAULT_USER to your regular username to hide the “user@hostname” info
 # when you’re logged in as yourself on your local machine.
 # TODO: Uncomment and use the following string instead of using the explicit name
 #       when prompt is configured.
 #export DEFAULT_USER=`whoami`
+
+# Prefer US English and use UTF-8.
+export LANG="en_US"
+export LC_ALL="en_US.UTF-8"

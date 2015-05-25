@@ -10,7 +10,7 @@ else
 fi
 HISTSIZE=1024                   # big history
 SAVEHIST=$HISTSIZE              # big history
-HISTIGNORE='&:clear:ls:cd:[bf]g:exit:[ t\]*'
+#HISTIGNORE='&:clear:reload:ls:cd:pwd:[bf]g:exit:date:* --help:[ t\]*'
 setopt APPEND_HISTORY           # append
 setopt INC_APPEND_HISTORY       # add commands as they are typed, don't wait until shell exit 
 setopt HIST_IGNORE_ALL_DUPS     # no duplicate
