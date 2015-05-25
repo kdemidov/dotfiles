@@ -20,6 +20,10 @@ foreach file (`echo $sources`)
   fi
 end
 
+# Include local aliases, adoptions etc. 
+for config_file ($ZSH/local/*.zsh)
+  source $config_file
+
 autoload -U colors zsh-mime-setup
 colors
 zsh-mime-setup  # run everything as if it's an executable
