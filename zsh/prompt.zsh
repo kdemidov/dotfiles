@@ -44,7 +44,7 @@ prompt_end() {
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment 'NONE' yellow "%(!.%{%F{red}%}.)$USER"
-    prompt_segment 'NONE' white " @ "
+    prompt_segment 'NONE' white " at "
     prompt_segment 'NONE' cyan "%m"
     prompt_segment 'NONE' white " in "
   fi
