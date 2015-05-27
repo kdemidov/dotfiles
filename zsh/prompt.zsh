@@ -43,15 +43,16 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I).
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    # TODO: Use better colors like 166 for the user name and 136 for the host.
     prompt_segment 'NONE' yellow "%(!.%{%F{red}%}.)$USER"
-    prompt_segment 'NONE' white " at "
+    prompt_segment 'NONE' white "@"
     prompt_segment 'NONE' cyan "%m"
-    prompt_segment 'NONE' white " in "
   fi
 }
 
 # Dir: current working directory.
 prompt_dir() {
+  prompt_segment 'NONE' white ": "
   prompt_segment 'NONE' green "%~"
 }
 
