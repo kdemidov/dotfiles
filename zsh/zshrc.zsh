@@ -14,23 +14,22 @@ sources+="$ZSH/completion.zsh"
 sources+="$ZSH/third-party/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Try to include all sources.
-foreach file (`echo $sources`)
-  if [[ -a $file ]]; then
+for file (`echo $sources`); do
+  if [[ -r $file ]]; then
     source $file
   fi
-end
+done
 
 # Include local aliases, adoptions etc. 
-for config_file ($ZSH/local/*.zsh)
-  source $config_file
+for file ($ZSH/local/*.zsh); do
+  if [[ -r $file ]]; then
+    source $file
+  fi
+done
 
 autoload -U colors zsh-mime-setup
 colors
 zsh-mime-setup  # run everything as if it's an executable
-
-# Auto quote pasted URLs.
-autoload -U url-quote-magic
-zle -N self-insert url-quote-magic
 
 DIRCOLORS_FILE="$ZSH/third-party/dircolors-solarized/dircolors.256dark"
 if [[ -f $DIRCOLORS_FILE ]]; then
