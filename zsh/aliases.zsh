@@ -100,9 +100,6 @@ alias localip='ipconfig getifaddr en1'
 # URL-encode strings.
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 
-# Copy with a progress bar.
-alias cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --"
-
 # Recursively delete ".DS_Store" files.
 alias dsclean='find . -type f -name "*.DS_Store" -ls -delete'
 
