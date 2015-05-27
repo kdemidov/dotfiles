@@ -12,7 +12,7 @@ autoload -Uz add-zsh-hook
 # Add hook for calling vcs_info before each command.
 add-zsh-hook precmd vcs_info
 
-+vi-git-untracked() {
+function +vi-git-untracked() {
   if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
     git status --porcelain | grep '??' &> /dev/null ; then
     # Show the marker if there are any untracked files in repo.
