@@ -1,5 +1,5 @@
 # "cd /path/to/a/file" does "cd /path/to/a".
-function cd() {
+cd() {
   if [[ -f "$1" ]]; then
     builtin cd "${1:h}"
   elif [[ "$1" = "" ]]; then
@@ -10,27 +10,32 @@ function cd() {
 }
 
 # Create a new directory and enter it.
-function mcd() {
+mcd() {
   mkdir -p "$@" && cd "$@"
 }
 
 # Move to a directory and show its content.
-function cl() {
+cdl() {
   cd "$@" && ls;
 }
 
+# Create backup of a file.
+bak() {
+  cp "$1"{,.bak};
+}
+
 # Change working directory to the top-most Finder window location.
-function cdf() { # short for `cdfinder`
+cdf() { # short for `cdfinder`
   cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
 }
 
 # Copy w/ progress.
-function cpprogress() {
+cpprogress() {
   rsync -WavP --human-readable --progress $1 $2
 }
 
 # Determine size of a file or total size of a directory.
-function fs() {
+fs() {
   if du -b /dev/null > /dev/null 2>&1; then
     local arg=-sbh
   else
@@ -46,13 +51,13 @@ function fs() {
 # Use Git’s colored diff when available.
 hash git &>/dev/null
 if [ $? -eq 0 ]; then
-  function diff() {
+  diff() {
     git diff --no-index --color-words "$@"
   }
 fi
 
 # Create a data URL from a file>.
-function dataurl() {
+dataurl() {
   local mimeType=$(file -b --mime-type "$1")
   if [[ $mimeType == text/* ]]; then
     mimeType="${mimeType};charset=utf-8"
@@ -61,17 +66,17 @@ function dataurl() {
 }
 
 # Image width.
-function iwidth() {
+iwidth() {
   echo $(sips -g pixelWidth $1 | grep -oE "[[:digit:]]{1,}$")
 }
 
 # Image height.
-function iheight() {
+iheight() {
   echo $(sips -g pixelHeight $1 | grep -oE "[[:digit:]]{1,}$")
 }
 
 # Create a git.io short URL.
-function gitio() {
+gitio() {
   if [ -z "${1}" -o -z "${2}" ]; then
     echo "Usage: \`gitio slug url\`"
     return 1
@@ -84,13 +89,13 @@ function gitio() {
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
-function tre() {
+tre() {
   tree -aC -I '.git' --dirsfirst "$@" | less -FRNX
 }
 
 # Copied from oh-my-zsh's extract.plugin.zsh.
 # Author Sorin Ionescu
-function extract() {
+extract() {
   local remove_archive
   local success
   local file_name
@@ -160,17 +165,17 @@ function extract() {
 }
 
 # Creates an archive (*.tar.gz) from given directory.
-function mktar() {
+mktar() {
   tar cvzf "${1%%/}.tar.gz"  "${1%%/}/";
 }
 
 # Create a ZIP archive of a file or folder.
-function mkzip() {
-  zip -r "${1%%/}.zip" "$1" ;
+mkzip() {
+  zip -r "${1%%/}.zip" "$1";
 }
 
 # Repeat n times command.
-function repeat() {
+repeatit() {
   local i max
   max=$1; shift;
   for ((i=1; i <= max ; i++)); do
@@ -184,7 +189,7 @@ function repeat() {
 # if ask "Kill process $pid <$pname> with signal $sig?"
 #   then kill $sig $pid
 # fi
-function ask() {
+ask() {
   echo -n "$@" '[y/n] ' ; read ans
   case "$ans" in
     y*|Y*) return 0 ;;
@@ -194,12 +199,12 @@ function ask() {
 
 # Open N windows stacked.
 # vim -oN filea fileb filec
-function vo() {
+vo() {
   vim -o$# $*
 }
 
 # Recursively fix dir/file permissions on a given directory.
-function chfix() {
+chfix() {
   if [ -d $1 ]; then
     find $1 -type d -exec chmod 755 {} \;
     find $1 -type f -exec chmod 644 {} \;
@@ -209,38 +214,38 @@ function chfix() {
 }
 
 # Find <dir> <file name regexp> <file contents regexp>.
-function fing {
+fing() {
   find "$1" -name "$2" -exec grep -H "$3" "{}" \;
 }
 
 # Find a file under the current directory.
-function ff() {
+ff() {
   find . -name "$1";
 }
 
 # Find something in file.
-function finf() {
+finf() {
   find . -name "$1" -exec grep -H $2 {} \; ;
 }
 
 # Find something in all files.
-function finallf() {
+finallf() {
   find . -type f -exec grep -H $1 {} \; ;
 }
 
 # Search files and remove them.
-function rmfiles() {
+rmfiles() {
   find . -name "$1" -print0 | xargs -0 rm;
 }
 
 # Search directories and remove them.
-function rmdirs() {
+rmdirs() {
   find . -name "$1" -print0 | xargs -0 rm -r;
 }
 
 # Syntax-highlight JSON strings or files.
 # Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
-function json() {
+json() {
   if [ -t 0 ]; then # argument
     python -mjson.tool <<< "$*" | pygmentize -l javascript
   else # pipe
