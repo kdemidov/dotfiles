@@ -4,8 +4,10 @@ alias reload="source $HOME/.zshrc"
 # Enable aliases to be sudo’ed.
 alias sudo='sudo '
 
+# Shortcuts for some programs.
 alias py='python'
 alias v='vim'
+alias a='ack'
 
 # Shortcuts.
 # TODO: Probably it make sense to move these aliases to local zsh file which is not in version control.
