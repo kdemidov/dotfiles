@@ -36,25 +36,33 @@ done
 unset path_file
 
 #
-# Editors
+# Editors and pager
 #
 
 export EDITOR=vim
 export VISUAL=$EDITOR
 export PAGER=less
 
-# Set the default Less options.
-# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
-# Remove -X and -F (exit if the content fits on one screen) to enable it.
-export LESS='-F -g -i -M -R -S -w -X -z-4'
+# Set the default "less" options:
+# -g   Highlight only the particular string which was found by the last search command.
+# -i   Only search with case sensitivity if there is mixed case.
+# -M   Causes "less" to prompt even more verbosely than "more".
+# -R   Use control characters that will color terminal output, rather than escaping them.
+# -S   Not fold long lines, but let them scroll off to the right.
+# -F   Automatically exit if the entire file can be displayed on the first screen.
+# -X   ignore an initialization termcap might tell it to do.
+# -w   Temporarily highlight the first "new" line after a forward movement of a full page.
+# -z-4 Scrolling window size is n lines less than the current screen size.
+# -x4  Use 4 space width tabs.
+export LESS='-g -i -M -R -S -F -X -w -z-4 -x4'
 
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md=$'\e[1;36m'
 
 # Set DEFAULT_USER to your regular username to hide the “user@hostname” info
 # when you’re logged in as yourself on your local machine.
-# TODO: Uncomment and use the following string instead of using the explicit name
-#       when prompt is configured.
+# TODO: Uncomment the following line when prompt
+#       is completely configured and tested well (other users, ssh access etc.).
 #export DEFAULT_USER=`whoami`
 
 # Prefer US English and use UTF-8.
