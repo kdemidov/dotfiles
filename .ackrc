@@ -1,0 +1,22 @@
+# Only search with case sensitivity if there is mixed case.
+--smart-case
+
+# Always sort the found files lexicographically.
+--sort-files
+
+# Always highlight the matching text, even if piping to a another program.
+--color
+
+# Use a default pager.
+--pager=$PAGER
+
+# TODO: Set some better colors (see http://bit.ly/1RuoYkM).
+
+# Set the color to be used for filenames.
+#--color-filename=color
+
+# Set the color to be used for matches.
+#--color-match=color
+
+# Set the color to be used for line numbers.
+#--color-lineno=
