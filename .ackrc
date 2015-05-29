@@ -4,19 +4,26 @@
 # Always sort the found files lexicographically.
 --sort-files
 
+# Always group matches by file namet, even if piping to a another program.
+--group
+
 # Always highlight the matching text, even if piping to a another program.
 --color
 
 # Use a default pager.
 --pager=$PAGER
 
-# TODO: Set some better colors (see http://bit.ly/1RuoYkM).
+#
+# Colors
+#
+# NOTE: "ack" uses Perl's "Term::ANSIColor" module.
+#       To check which colors are available, run "perldoc Term::ANSIColor" in console.
 
 # Set the color to be used for filenames.
-#--color-filename=color
+--color-filename=green
 
 # Set the color to be used for matches.
-#--color-match=color
+--color-match=bold white
 
 # Set the color to be used for line numbers.
-#--color-lineno=
+--color-lineno=cyan
