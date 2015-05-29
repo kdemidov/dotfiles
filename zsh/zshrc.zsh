@@ -31,6 +31,10 @@ autoload -U colors zsh-mime-setup
 colors
 zsh-mime-setup  # run everything as if it's an executable
 
+# Auto quote pasted URLs.
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
+
 DIRCOLORS_FILE="$ZSH/third-party/dircolors-solarized/dircolors.256dark"
 if [[ -f $DIRCOLORS_FILE ]]; then
   if type dircolors > /dev/null 2>&1; then

@@ -7,10 +7,6 @@ alias sudo='sudo '
 alias py='python'
 alias v='vim'
 
-# Easier navigation.
-alias ..='cd ..'
-alias ...='cd ../..'
-
 # Shortcuts.
 # TODO: Probably it make sense to move these aliases to local zsh file which is not in version control.
 alias dc='cd ~/Documents'
