@@ -35,9 +35,6 @@ zstyle ':vcs_info:*' actionformats '%b%F{blue}%b%f (%F{cyan}%a%f) %u%c'
 zstyle ':vcs_info:svn:*' branchformat '%F{blue}%b%f|%F{cyan}%r%f'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 
-# Turns on substitutions in prompt.
-setopt PROMPT_SUBST
-
 CURRENT_BG='NONE'
 
 # TODO: Add an explanation about prompt format and segments.

@@ -10,6 +10,7 @@ else
 fi
 HISTSIZE=1024                   # big history
 SAVEHIST=$HISTSIZE              # big history
+# TODO: Check whether HISTIGNORE works in zsh or not.
 #HISTIGNORE='&:clear:reload:ls:cd:pwd:[bf]g:exit:date:* --help:[ t\]*'
 setopt APPEND_HISTORY           # append
 setopt INC_APPEND_HISTORY       # add commands as they are typed, don't wait until shell exit 
@@ -33,6 +34,7 @@ setopt GLOB_DOTS                # include dotfiles in globbing
 setopt PRINT_EXIT_VALUE         # print return value if non-zero
 setopt MULTIOS                  # Write to multiple descriptors.
 setopt LISTPACKED               # Allow completion list columns to be different sizes
+setopt PROMPT_SUBST             # Turns on substitutions in prompt.
 
 unsetopt BEEP                   # no bell on error
 unsetopt LIST_BEEP              # no bell on ambiguous completion
