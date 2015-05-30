@@ -27,7 +27,7 @@ for file ($ZSH/local/*.zsh); do
   fi
 done
 
-autoload -U colors zsh-mime-setup
+autoload -U colors zsh-mime-setup zmv
 colors
 zsh-mime-setup  # run everything as if it's an executable
 
