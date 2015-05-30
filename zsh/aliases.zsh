@@ -4,10 +4,15 @@ alias reload="source $HOME/.zshrc"
 # Enable aliases to be sudo’ed.
 alias sudo='sudo '
 
-# Shortcuts for some programs.
+# Shortcuts for some applications.
 alias py='python'
 alias v='vim'
 alias a='ack'
+
+# The many forms of zmv.
+alias zmv='zmv -wM'
+alias zcp='zmv -wC'
+alias zln='zmv -wL'
 
 # Shortcuts.
 # TODO: Probably it make sense to move these aliases to local zsh file which is not in version control.
