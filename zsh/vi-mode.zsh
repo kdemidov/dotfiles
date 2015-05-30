@@ -20,7 +20,8 @@ function zle-keymap-select zle-line-init zle-line-finish {
 }
 
 # Ensure that the prompt is redrawn when the terminal size changes.
-TRAPWINCH() {
+# TODO  Check that the function works correctly (see http://bit.ly/1cpcY4a and http://bit.ly/1HUr6AL).
+function TRAPWINCH() {
   zle && { zle reset-prompt; zle -R }
 }
 
