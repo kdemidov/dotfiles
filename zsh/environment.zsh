@@ -56,8 +56,27 @@ export PAGER=less
 # -x4  Use 4 space width tabs.
 export LESS='-g -i -M -R -S -F -X -w -z-4 -x4'
 
-# Highlight section titles in manual pages.
-export LESS_TERMCAP_md=$'\e[1;36m'
+# Set "less" colors for manual pages.
+#
+# NOTE: Command "man terminfo" can be used to get a detailed information about the modes.
+# NOTE: The following assignment can be used to display "source" (in terms of modes) of manual pages.
+#       It helps to understand to which parts of a text the modes are applied.
+#export LESS_TERMCAP_DEBUG=1
+#
+# Turn on blinking.
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 6) # cyan
+# Turn on bold (extra bright) mode.
+export LESS_TERMCAP_md=$(tput bold; tput setaf 6) # cyan
+# Begin standout mode.
+export LESS_TERMCAP_so=$(tput bold; tput setaf 7; tput setab 6) # white on cyan
+# Exit standout mode.
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
+# Begin underline mode.
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # white
+# Exit underline mode.
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+# Turn off all attribute modes.
+export LESS_TERMCAP_me=$(tput sgr0)
 
 # Set DEFAULT_USER to your regular username to hide the “user@hostname” info
 # when you’re logged in as yourself on your local machine.
