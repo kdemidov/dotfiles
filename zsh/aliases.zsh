@@ -122,3 +122,6 @@ alias mvim='mvim --remote-tab-silent'
 
 # Open iOS Simulator.
 alias ios="open /Applications/Xcode.app/Contents/Applications/iOS\ Simulator.app"
+
+# Open OS X's Quick Look.
+alias ql='qlmanage -p 2>/dev/null'
