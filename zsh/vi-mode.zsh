@@ -30,7 +30,7 @@ zle -N zle-line-finish
 zle -N zle-keymap-select
 zle -N edit-command-line
 
-bindkey -v            
+bindkey -v
 
 # Allow v to interactive editing of command line in $EDITOR
 autoload -Uz edit-command-line
