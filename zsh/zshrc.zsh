@@ -1,4 +1,4 @@
-# TODO: Add a header here like .vimrc has.
+# TODO: Add a header here like .vimrc has
 
 ZSH="$HOME/.dotfiles/zsh"
 
@@ -13,14 +13,14 @@ sources+="$ZSH/functions.zsh"
 sources+="$ZSH/completion.zsh"
 sources+="$ZSH/third-party/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-# Try to include all sources.
+# Try to include all sources
 for file (`echo $sources`); do
   if [[ -r $file ]]; then
     source $file
   fi
 done
 
-# Include local aliases, adoptions etc. 
+# Include local aliases, adoptions etc.
 for file ($ZSH/local/*.zsh); do
   if [[ -r $file ]]; then
     source $file
@@ -31,7 +31,7 @@ autoload -U colors zsh-mime-setup zmv
 colors
 zsh-mime-setup  # run everything as if it's an executable
 
-# Auto quote pasted URLs.
+# Auto quote pasted URLs
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
@@ -42,7 +42,7 @@ if [[ -f $DIRCOLORS_FILE ]]; then
   fi
 fi
 
-# Set the terminal title to "username@hostname: directory".
+# Set the terminal title to "username@hostname: directory"
 case $TERM in
   xterm*)
     precmd () {

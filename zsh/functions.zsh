@@ -1,4 +1,4 @@
-# "cd /path/to/a/file" does "cd /path/to/a".
+# "cd /path/to/a/file" does "cd /path/to/a"
 function cd() {
   if [[ -f "$1" ]]; then
     builtin cd "${1:h}"
@@ -9,32 +9,32 @@ function cd() {
   fi
 }
 
-# Create a new directory and enter it.
+# Create a new directory and enter it
 function mcd() {
   mkdir -p "$@" && cd "$@"
 }
 
-# Move to a directory and show its content.
+# Move to a directory and show its content
 function cdl() {
   cd "$@" && ls
 }
 
-# Create backup of a file.
+# Create backup of a file
 function bak() {
   cp "$1"{,.bak}
 }
 
-# Change working directory to the top-most Finder window location.
+# Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
   cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
 }
 
-# Copy w/ progress.
+# Copy w/ progress
 function cpprogress() {
   rsync -WavP --human-readable --progress $1 $2
 }
 
-# Determine size of a file or total size of a directory.
+# Determine size of a file or total size of a directory
 function fs() {
   if du -b /dev/null > /dev/null 2>&1; then
     local arg=-sbh
@@ -48,7 +48,7 @@ function fs() {
   fi
 }
 
-# Use Git’s colored diff when available.
+# Use Git’s colored diff when available
 hash git &>/dev/null
 if [ $? -eq 0 ]; then
   function diff() {
@@ -56,7 +56,7 @@ if [ $? -eq 0 ]; then
   }
 fi
 
-# Create a data URL from a file>.
+# Create a data URL from a file>
 function dataurl() {
   local mimeType=$(file -b --mime-type "$1")
   if [[ $mimeType == text/* ]]; then
@@ -65,17 +65,17 @@ function dataurl() {
   echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }
 
-# Image width.
+# Image width
 function iwidth() {
   echo $(sips -g pixelWidth $1 | grep -oE "[[:digit:]]{1,}$")
 }
 
-# Image height.
+# Image height
 function iheight() {
   echo $(sips -g pixelHeight $1 | grep -oE "[[:digit:]]{1,}$")
 }
 
-# Create a git.io short URL.
+# Create a git.io short URL
 function gitio() {
   if [ -z "${1}" -o -z "${2}" ]; then
     echo "Usage: \`gitio slug url\`"
@@ -92,7 +92,7 @@ function tre() {
   tree -aC -I '.git' --dirsfirst "$@" | less -FRNX
 }
 
-# Copied from oh-my-zsh's extract.plugin.zsh.
+# Copied from oh-my-zsh's extract.plugin.zsh
 # Author Sorin Ionescu
 function extract() {
   local remove_archive
@@ -163,17 +163,17 @@ function extract() {
   done
 }
 
-# Creates an archive (*.tar.gz) from given directory.
+# Creates an archive (*.tar.gz) from given directory
 function mktar() {
   tar cvzf "${1%%/}.tar.gz"  "${1%%/}/";
 }
 
-# Create a ZIP archive of a file or folder.
+# Create a ZIP archive of a file or folder
 function mkzip() {
   zip -r "${1%%/}.zip" "$1";
 }
 
-# Repeat n times command.
+# Repeat n times command
 function repeat() {
   local i max
   max=$1; shift;
@@ -182,7 +182,7 @@ function repeat() {
   done
 }
 
-# Print confirmation.
+# Print confirmation
 # Usage:
 #
 # if ask "Kill process $pid <$pname> with signal $sig?"
@@ -196,13 +196,13 @@ function ask() {
   esac
 }
 
-# Open N windows stacked.
+# Open N windows stacked
 # vim -oN filea fileb filec
 function vo() {
   vim -o$# $*
 }
 
-# Recursively fix dir/file permissions on a given directory.
+# Recursively fix dir/file permissions on a given directory
 function chfix() {
   if [ -d $1 ]; then
     find $1 -type d -exec chmod 755 {} \;
@@ -212,37 +212,37 @@ function chfix() {
   fi
 }
 
-# Find <dir> <file name regexp> <file contents regexp>.
+# Find <dir> <file name regexp> <file contents regexp>
 function fing() {
   find "$1" -name "$2" -exec grep -H "$3" "{}" \;
 }
 
-# Find a file under the current directory.
+# Find a file under the current directory
 function ff() {
   find . -name "$1"
 }
 
-# Find something in file.
+# Find something in file
 function finf() {
   find . -name "$1" -exec grep -H $2 {} \;
 }
 
-# Find something in all files.
+# Find something in all files
 function finallf() {
   find . -type f -exec grep -H $1 {} \;
 }
 
-# Search files and remove them.
+# Search files and remove them
 function rmfiles() {
   find . -name "$1" -print0 | xargs -0 rm
 }
 
-# Search directories and remove them.
+# Search directories and remove them
 function rmdirs() {
   find . -name "$1" -print0 | xargs -0 rm -r
 }
 
-# Syntax-highlight JSON strings or files.
+# Syntax-highlight JSON strings or files
 # Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
 function json() {
   if [ -t 0 ]; then # argument

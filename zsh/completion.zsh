@@ -1,33 +1,33 @@
 #
-# Tab completion configuration.
+# Tab completion configuration
 #
 
-# Load and initialize the completion system ignoring insecure directories.
+# Load and initialize the completion system ignoring insecure directories
 autoload -Uz compinit && compinit -i
 
-# Load completion listings module.
+# Load completion listings module
 zmodload -i zsh/complist
 
 #
 # Options
 #
 
-# Complete from both ends of a word.
+# Complete from both ends of a word
 setopt COMPLETE_IN_WORD
 
-# Move cursor to the end of a completed word.
+# Move cursor to the end of a completed word
 setopt ALWAYS_TO_END
 
-# Perform path search even on command names with slashes.
+# Perform path search even on command names with slashes
 setopt PATH_DIRS
 
-# Show completion menu on a successive tab press.
+# Show completion menu on a successive tab press
 setopt AUTO_MENU
 
-# Automatically list choices on ambiguous completion.
+# Automatically list choices on ambiguous completion
 setopt AUTO_LIST
 
-# If completed parameter is a directory, add a trailing slash.
+# If completed parameter is a directory, add a trailing slash
 setopt AUTO_PARAM_SLASH
 
 # Whenever a command completion or spelling correction is attempted,
@@ -35,29 +35,29 @@ setopt AUTO_PARAM_SLASH
 # This makes the first completion slower but avoids false reports of spelling errors.
 setopt HASH_LIST_ALL
 
-# Try to correct the spelling of commands.
+# Try to correct the spelling of commands
 setopt CORRECT
 
-# Prevents aliases on the command line from being internally substituted before completion is attempted. 
+# Prevents aliases on the command line from being internally substituted before completion is attempted
 setopt COMPLETE_ALIASES
 
-# Complete as much of a completion until it gets ambiguous.
+# Complete as much of a completion until it gets ambiguous
 setopt LIST_AMBIGUOUS
 
-# Do not autoselect the first completion entry.
+# Do not autoselect the first completion entry
 unsetopt MENU_COMPLETE
 
-# Disable start/stop characters in shell editor.
+# Disable start/stop characters in shell editor
 unsetopt FLOW_CONTROL
 
-# Treat these characters as part of a word.
+# Treat these characters as part of a word
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
 #
 # Styles
 #
 
-# Group matches and describe.
+# Group matches and describe
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:matches' group 'yes'
 zstyle ':completion:*:options' description 'yes'
@@ -69,37 +69,37 @@ zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion:*' format ' %F{yellow}-- %d --%f'
 
-# For all completions: grouping the output.
+# For all completions: grouping the output
 zstyle ':completion:*' group-name ''
 
-# For all completions: show comments when present.
+# For all completions: show comments when present
 zstyle ':completion:*' verbose 'yes'
 
-# Completion of .. directories.
+# Completion of .. directories
 zstyle ':completion:*' special-dirs 'true'
 
-# Auto rehash commands.
+# Auto rehash commands
 zstyle ':completion:*' rehash true
 
-# Case insensitivity.
+# Case insensitivity
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-# Caching of completion stuff.
+# Caching of completion stuff
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$ZSH/cache"
 
-# Fuzzy match mistyped completions.
+# Fuzzy match mistyped completions
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-# Increase the number of errors based on the length of the typed word.
+# Increase the number of errors based on the length of the typed word
 zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
 
-# Don't complete unavailable commands.
+# Don't complete unavailable commands
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
 
-# Array completion element sorting.
+# Array completion element sorting
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
 # Directories
@@ -118,17 +118,17 @@ zstyle ':completion:*:history-words' menu yes
 # Environmental Variables
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 
-# Populate hostname completion.
+# Populate hostname completion
 zstyle -e ':completion:*:hosts' hosts 'reply=(
   ${=${=${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) 2>/dev/null)"}%%[#| ]*}//\]:[0-9]*/ }//,/ }//\[/ }
   ${=${(f)"$(cat /etc/hosts(|)(N) <<(ypcat hosts 2>/dev/null))"}%%\#*}
   ${=${${${${(@M)${(f)"$(cat ~/.ssh/config 2>/dev/null)"}:#Host *}#Host }:#*\**}:#*\?*}}
 )'
 
-# ... unless we really want to.
+# ... unless we really want to
 zstyle '*' single-ignored show
 
-# Ignore multiple entries.
+# Ignore multiple entries
 zstyle ':completion:*:(rm|kill|diff):*' ignore-line other
 zstyle ':completion:*:rm:*' file-patterns '*:all-files'
 
