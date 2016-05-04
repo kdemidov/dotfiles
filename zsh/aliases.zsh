@@ -14,13 +14,6 @@ alias zmv='zmv -wM'
 alias zcp='zmv -wC'
 alias zln='zmv -wL'
 
-# Shortcuts
-# TODO: Probably it make sense to move these aliases to local zsh file which is not in version control
-alias dc='cd ~/Documents'
-alias dl='cd ~/Downloads'
-alias dt='cd ~/Desktop'
-alias pr='cd ~/Projects'
-
 # Print the directory stack with one entry per line, prefixing each entry with its index in the stack
 alias dirs='dirs -v'
 

@@ -12,7 +12,6 @@ typeset -U path manpath
 # Set the list of directories that Zsh searches for programs
 path=(
   /usr/local/{bin,sbin}
-  /usr/local/git/bin
   /usr/local/opt/coreutils/libexec/gnubin
   $path
 )
@@ -26,7 +25,7 @@ unset path_file
 manpath=(
   /usr/local/share/man
   /usr/share/man
-  /usr/local/opt/coreutils/libexec/gnuman 
+  /usr/local/opt/coreutils/libexec/gnuman
   $manpath
 )
 
