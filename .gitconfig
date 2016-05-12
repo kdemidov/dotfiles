@@ -1,0 +1,120 @@
+[core]
+  excludesfile = /Users/kostya/.gitignore_global
+  editor = vim
+
+  # Make `git rebase` safer on OS X
+  # http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
+  trustctime = false
+
+  # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+  # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+  precomposeunicode = false
+[alias]
+  # View abbreviated SHA, description, and history graph of the latest 20 commits
+  l = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+  # View the current working tree status using the short format
+  s = status -s
+
+  # `git di $number` shows the diff between the state `$number` revisions ago and the current state
+  di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+
+  # Pull in remote changes for the current repository and all its submodules
+  p = !"git pull; git submodule foreach git pull origin master"
+
+  # Switch to a branch, creating it if necessary
+  go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+  # Show verbose output about tags, branches or remotes
+  tags = tag -l
+  branches = branch -a
+  remotes = remote -v
+
+  # Amend the currently staged files to the latest commit
+  amend = commit --amend --reuse-message=HEAD
+
+  # Credit an author on the latest commit
+  credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+
+  # Interactive rebase with the given number of latest commits
+  reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+  # Remove the old tag with this name and tag the latest commit with it.
+  retag = "!r() { git tag -d $1 && git push origin :refs/tags/$1 && git tag $1; }; r"
+
+  # Find branches containing commit
+  fb = "!f() { git branch -a --contains $1; }; f"
+
+  # Find tags containing commit
+  ft = "!f() { git describe --always --contains $1; }; f"
+
+  # Find commits by source code
+  fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S\"$1\"; }; f"
+
+  # Find commits by commit message
+  fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+  # Remove branches that have already been merged with master
+  # a.k.a. ‘delete merged’
+  dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+  # List contributors with number of commits
+  contributors = shortlog --summary --numbered
+
+  undo = reset HEAD~1
+
+  # Show the history of a file, with diffs
+  fl = log -u
+
+  # Show diff of a commit given a revision
+  dr  = "!f() { git diff "$1"^.."$1"; }; f"
+
+  # Show title of a commit given a revision
+  lr  = "!f() { git l "$1"^.."$1"; }; f"
+
+  # Assume a file as unchanged
+  assume = update-index --assume-unchanged
+
+  # Unassume a file:
+  unassume = update-index --no-assume-unchanged
+
+  # Show assumed files
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+
+  # Unassume all the assumed files
+  unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+
+  # Stash operations
+  sl = stash list
+  sa = stash apply
+  ss = stash save
+
+  # Unstage any files that have been added to the staging area
+  unstage = reset HEAD
+
+  # Show changes that have been staged
+  diffc = diff --cached
+[diff]
+  # Detect copies as well as renames
+  renames = copies
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+[credential]
+  helper = osxkeychain
+[filter "media"]
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
+[push]
+  default = simple
+
+  # Make `git push` push relevant annotated tags when pushing branches out.
+  followTags = true
+[merge]
+  # Include summaries of merged commits in newly created merge commit messages
+  log = true
+[branch]
+  autosetuprebase = always
