@@ -124,6 +124,9 @@
 [user]
 	name = Konstantin Demidov
 	email = mail@konstantindemidov.com
+
+	# Commit will not proceed if no user.email is found in the local git config
 	useConfigOnly = true
 [rebase]
+	# Automatically create a temporary stash before the operation begins, and apply it after the operation ends
 	autostash = true
