@@ -124,3 +124,6 @@
 [user]
 	name = Konstantin Demidov
 	email = mail@konstantindemidov.com
+	useConfigOnly = true
+[rebase]
+	autostash = true
