@@ -22,6 +22,9 @@
   # Pull in remote changes for the current repository and all its submodules
   p = !"git pull; git submodule foreach git pull origin master"
 
+  # Commit all changes
+  ca = !git add -A && git commit -av
+
   # Switch to a branch, creating it if necessary
   go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
@@ -118,3 +121,6 @@
   log = true
 [branch]
   autosetuprebase = always
+[user]
+  name = Konstantin Demidov
+  email = mail@konstantindemidov.com
