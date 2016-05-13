@@ -16,6 +16,8 @@ path=(
   $path
 )
 
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 for path_file in /etc/paths.d/*(.N); do
   path+=($(<$path_file))
 done
