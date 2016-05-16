@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/kostya'
+let g:netrw_dirhist_2='/Users/kostya/Dropbox/dotfiles/vim/.vim/bundle'
+let g:netrw_dirhist_3='/Users/kostya/Dropbox/dotfiles/vim/.vim/bundle/snipmate-snippets'
