@@ -1,5 +1,7 @@
 [core]
 	excludesfile = /Users/kostya/.gitignore_global
+
+  # Use vim for editing commit messages
 	editor = vim
 
 	# Make `git rebase` safer on OS X
