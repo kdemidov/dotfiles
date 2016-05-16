@@ -40,7 +40,8 @@ Bundle 'honza/vim-snippets'
 Bundle 'hdima/python-syntax'
 Bundle 'duff/vim-scratch'
 Bundle '2072/PHP-Indenting-for-VIm'
-"Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'jistr/vim-nerdtree-tabs'
+
 "Bundle 'mattn/zencoding-vim'
 "Bundle 'mhinz/vim-startify'
 "Bundle 'tpope/vim-surround'
@@ -53,7 +54,7 @@ Bundle 'vim-scripts/camelcasemotion'
 Bundle 'vim-scripts/showmarks--Politz'
 Bundle 'vim-scripts/IndexedSearch'
 Bundle 'vim-scripts/nextval'
-"Bundle 'vim-scripts/bufkill.vim'
+Bundle 'vim-scripts/bufkill.vim'
 
 " Color scemes
 Bundle 'altercation/vim-colors-solarized'
@@ -191,8 +192,8 @@ set synmaxcol=2048
 
 " Use the color scheme
 if has("gui_running")
-  "colorscheme xoria256
   colorscheme jellybeans
+  "colorscheme Tomorrow-Night
 
   hi SignColumn guibg=#101010
   hi hlShowMarks guifg=#eeeeee guibg=#875f87
@@ -200,8 +201,8 @@ if has("gui_running")
 else
   " Enable 256 colors for terminal
   set t_Co=256
-  "colorscheme xoria256
   colorscheme jellybeans
+  "colorscheme Tomorrow-Night
 endif
 
 " Enable the mouse for all modes
