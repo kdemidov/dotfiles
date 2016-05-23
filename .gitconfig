@@ -33,6 +33,7 @@
 	# Show verbose output about tags, branches or remotes
 	tags = tag -l
 	branches = branch -a
+	# branches = "!sh -c 'echo Unmerged: && git branch -a -v --no-merged && echo Merged: && git branch -a -v --merged'"
 	remotes = remote -v
 	submodules = "!git config --file .gitmodules --get-regexp path | awk '{ print $2 }'"
 
