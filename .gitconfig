@@ -135,3 +135,5 @@
 [rebase]
 	# Automatically create a temporary stash before the operation begins, and apply it after the operation ends
 	autostash = true
+[commit]
+	template = ~/.stCommitMsg
