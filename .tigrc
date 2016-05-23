@@ -1,0 +1,88 @@
+# Manual Page: http://jonas.nitro.dk/tig/tigrc.5.html
+
+# Main view
+set main-view = \
+    line-number:false,interval=5,width=5 \
+    date:relative \
+    author:email-user \
+    id:true \
+    commit-title:true,graph=true,refs=true
+
+# Stash view
+set stash-view = \
+    line-number:false,interval=1,width=5 \
+    date:relative \
+    author:email-user \
+    id:true \
+    commit-title:true,graph=true,refs=true
+
+# Status view
+set status-view = \
+    status:long \
+    file-name:auto
+
+# Blame view
+set blame-view = \
+    line-number:true,interval=1,width=5 \
+    author:email-user \
+    id:true \
+    text:true
+
+set tree-view = \
+    author:email-user \
+    file-size:units \
+    date:relative \
+    id:no \
+    file-name
+
+# Use UTF-8 character graphics for line drawing
+set line-graphics = utf-8
+
+# Show staged and unstaged changes in the main view
+set show-changes = true
+
+# Use Git's default (reverse chronological) order, never automatically,
+# use topo-order for the commit graph.
+set commit-order = default
+
+# Number of spaces to use when expanding tabs
+set tab-size = 2
+
+# Use horizontal split
+set vertical-split = false
+
+# Format reference names
+set reference-format = [branch] <tag> {remote} ~replace~
+
+# Automatically pass line number to editor
+set editor-line-number = true
+
+# Enable mouse support
+set mouse = true
+
+# Colors
+color cursor white color236
+color date cyan default
+color diff-stat green color233
+
+# Easy jump to previous/next patches in stage/diff view
+bind stage <Ctrl-J> :/^diff --
+bind stage <Ctrl-K> :?^diff --
+bind diff <Ctrl-J> :/^diff --
+bind diff <Ctrl-K> :?^diff --
+
+# Reset to commit
+# bind main r !<git reset %(commit)
+
+# Checkout commit
+bind main u !<git checkout %(commit)
+bind main U !<git checkout -b "%(prompt)" %(commit)
+
+bind stash A ?git stash apply %(stash)
+bind stash S ?git stash save
+bind stash ! ?git stash drop %(stash)
+
+bind refs C ?git checkout %(branch)
+bind refs ! ?git branch -D %(branch)
+
+bind generic Y !@bash -c "echo -n %(commit) | pbcopy"
