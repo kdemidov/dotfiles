@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/kostya/.gitignore_global
+	excludesfile = ~/.gitignore_global
 
 	# Use vim for editing commit messages
 	editor = vim
