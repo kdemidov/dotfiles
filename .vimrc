@@ -15,57 +15,59 @@
 set nocompatible
 
 " Vundle setup and bundles {{{2
-set runtimepath+=$HOME/.vim/bundle/vundle/
-call vundle#rc()
+set runtimepath+=$HOME/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Let Vundle manage Vundle (required!)
-Bundle 'gmarik/vundle'
+" Let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " Original repos on GitHub
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'tpope/vim-repeat'
-Bundle 'ervandew/supertab'
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-session'
-Bundle 'sjl/gundo.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'sickill/vim-pasta'
-Bundle 'Raimondi/delimitMate'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
-Bundle 'hdima/python-syntax'
-Bundle 'duff/vim-scratch'
-Bundle '2072/PHP-Indenting-for-VIm'
-Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'tpope/vim-repeat'
+Plugin 'ervandew/supertab'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
+Plugin 'sjl/gundo.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'sickill/vim-pasta'
+Plugin 'Raimondi/delimitMate'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'hdima/python-syntax'
+Plugin 'duff/vim-scratch'
+Plugin '2072/PHP-Indenting-for-VIm'
+Plugin 'jistr/vim-nerdtree-tabs'
 
-"Bundle 'mattn/zencoding-vim'
-"Bundle 'mhinz/vim-startify'
-"Bundle 'tpope/vim-surround'
-"Bundle 'tpope/vim-pathogen'
+"Plugin 'mattn/zencoding-vim'
+"Plugin 'mhinz/vim-startify'
+"Plugin 'tpope/vim-surround'
+"Plugin 'tpope/vim-pathogen'
 
 " Plugins from https://github.com/vim-scripts
-Bundle 'vim-scripts/YankRing.vim'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'vim-scripts/camelcasemotion'
-Bundle 'vim-scripts/showmarks--Politz'
-Bundle 'vim-scripts/IndexedSearch'
-Bundle 'vim-scripts/nextval'
-Bundle 'vim-scripts/bufkill.vim'
+Plugin 'vim-scripts/YankRing.vim'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/camelcasemotion'
+Plugin 'vim-scripts/showmarks--Politz'
+Plugin 'vim-scripts/IndexedSearch'
+Plugin 'vim-scripts/nextval'
+Plugin 'vim-scripts/bufkill.vim'
 
 " Color scemes
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'sjl/badwolf'
-Bundle 'morhetz/gruvbox'
-Bundle 'baskerville/bubblegum'
-Bundle 'tomasr/molokai'
-Bundle 'noahfrederick/vim-hemisu'
-Bundle 'Lokaltog/vim-distinguished'
-Bundle 'acarapetis/vim-github-theme'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'sjl/badwolf'
+Plugin 'morhetz/gruvbox'
+Plugin 'baskerville/bubblegum'
+Plugin 'tomasr/molokai'
+Plugin 'noahfrederick/vim-hemisu'
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'acarapetis/vim-github-theme'
+
+call vundle#end()
 " 2}}}
 
 " Use UTF-8 as the default buffer encoding
