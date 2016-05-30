@@ -8,6 +8,7 @@ alias sudo='sudo '
 alias py='python'
 alias v='vim'
 alias a='ack'
+alias g='git'
 
 # The many forms of zmv
 alias zmv='zmv -wM'
