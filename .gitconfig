@@ -30,6 +30,9 @@
 	# Pull in remote changes for the current repository and all its submodules
 	p = !"git pull; git submodule foreach git pull origin master"
 
+	c = commit
+	cm = commit -m
+
 	# Commit all changes
 	ca = !git add -A && git commit -av
 
@@ -42,6 +45,7 @@
 	# branches = "!sh -c 'echo Unmerged: && git branch -a -v --no-merged && echo Merged: && git branch -a -v --merged'"
 	remotes = remote -v
 	submodules = "!git config --file .gitmodules --get-regexp path | awk '{ print $2 }'"
+	aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ => \\2/' | sort
 
 	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
@@ -51,6 +55,7 @@
 
 	rb = rebase
 	rbi = rebase -i
+	rbs = rebase --skip
 	rba = rebase --abort
 	rbc = rebase --continue
 
