@@ -114,12 +114,12 @@
 
 	# Unstage any files that have been added to the staging area
 	unstage = reset HEAD
-
-	# Show changes that have been staged
-	diffc = diff --cached
 [diff]
 	# Detect copies as well as renames
 	renames = copies
+	# Use mnemonic prefixes (i - index, w - work tree, c - commit, o -object)
+	# instead of the standard a and b notation:
+	mnemonicprefix = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
