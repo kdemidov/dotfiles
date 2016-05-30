@@ -12,6 +12,16 @@
 	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
 	precomposeunicode = false
 [alias]
+	a = add
+	#aa = add --all --intent-to-add
+	ae = add --edit
+	ai = add --interactive
+	ap = add --patch
+	#at = add --intent-to-add
+	#au = add --update
+
+	b = branch -vv
+
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 	lol = log --graph --decorate --oneline --abbrev-commit
@@ -30,7 +40,7 @@
 	# Pull in remote changes for the current repository and all its submodules
 	p = !"git pull; git submodule foreach git pull origin master"
 
-	c = commit
+	c = commit -v
 	cm = commit -m
 
 	# Commit all changes
