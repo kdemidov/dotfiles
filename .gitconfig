@@ -164,3 +164,6 @@
 	autostash = true
 [commit]
 	template = ~/.stCommitMsg
+[advice]
+	# Disable “how to stage/unstage/add” hints given by git status
+	statusHints = false
