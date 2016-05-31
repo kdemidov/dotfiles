@@ -666,6 +666,9 @@ noremap <silent> <Leader>w :w<CR>
 " Exit without saving any changes
 noremap <silent> <Leader>q :q!<CR>
 
+" Save changes and exit
+noremap <silent> <Leader>x :x<CR>
+
 " Quicker way to delete a buffer
 nnoremap <Leader>bd :bd<CR>
 
