@@ -12,16 +12,31 @@ autoload -Uz add-zsh-hook
 # Add hook for calling vcs_info before each command
 add-zsh-hook precmd vcs_info
 
+# Show red marker ● if there are untracked files in repository
+# Make sure you have added staged to your 'formats':  %c
 function +vi-git-untracked() {
-  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-    git status --porcelain | grep '??' &> /dev/null ; then
-    # Show the marker if there are any untracked files in repo
+  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
     hook_com[unstaged]='%F{red}●%f'
   fi
 }
 
+# Show +N/-N when your local branch is ahead-of or behind remote HEAD.
+# Make sure you have added misc to your 'formats':  %m
+function +vi-git-aheadbehind() {
+  local ahead behind
+  local -a gitstatus
+
+  ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l | tr -d ' ')
+  (( $ahead )) && gitstatus+=( "%B%F{blue}+${ahead}%f%b" )
+
+  behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | tr -d ' ')
+  (( $behind )) && gitstatus+=( "%B%F{red}-${behind}%f%b" )
+
+  hook_com[misc]+=${(j::)gitstatus}
+}
+
 # Configure vcs_info
-zstyle ':vcs_info:*' enable git hg svn
+zstyle ':vcs_info:*' enable git hg
 # NOTE: Check-for-changes can be really slow.
 #       You should disable it if you work with large repositories.
 # TODO: Probably it makes sense to add something like implemented here: http://bit.ly/1GExafh.
@@ -29,11 +44,9 @@ zstyle ':vcs_info:*' enable git hg svn
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '%F{yellow}●%f'
 zstyle ':vcs_info:*' stagedstr '%F{green}●%f'
-zstyle ':vcs_info:*' formats '%F{blue}%b%f %u%c'
-zstyle ':vcs_info:*' actionformats '%b%F{blue}%b%f (%F{cyan}%a%f) %u%c'
-# TODO: Looks like the following style doesn't work. It needs to be checked
-zstyle ':vcs_info:svn:*' branchformat '%F{blue}%b%f|%F{cyan}%r%f'
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
+zstyle ':vcs_info:*' formats '%F{blue}%b%f %u%c%m'
+zstyle ':vcs_info:*' actionformats '%b%F{blue}%b%f (%F{cyan}%a%f) %u%c%m'
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-aheadbehind
 
 CURRENT_BG='NONE'
 
@@ -87,9 +100,8 @@ prompt_dir() {
 
 prompt_vcs_info() {
   if [[ -n "$vcs_info_msg_0_" ]]; then
-    prompt_segment 'NONE' gray " ("
+    prompt_segment 'NONE' gray " on "
     prompt_segment 'NONE' default "${vcs_info_msg_0_}"
-    prompt_segment 'NONE' gray ")"
   fi
 }
 
