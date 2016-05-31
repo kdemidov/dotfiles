@@ -72,14 +72,14 @@ prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     # TODO: Use better colors like 166 for the user name and 136 for the host
     prompt_segment 'NONE' yellow "%(!.%{%F{red}%}.)$USER"
-    prompt_segment 'NONE' white "@"
+    prompt_segment 'NONE' gray "@"
     prompt_segment 'NONE' cyan "%m"
   fi
 }
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment 'NONE' white ": "
+  prompt_segment 'NONE' gray ": "
   # TODO: Probably it makes sense to check whether we have vcs_info or not and print longer or shorter $PWD.
   #       See http://bit.ly/1HMxw1Z (Episode III).
   prompt_segment 'NONE' green "%~"
@@ -87,8 +87,9 @@ prompt_dir() {
 
 prompt_vcs_info() {
   if [[ -n "$vcs_info_msg_0_" ]]; then
-    prompt_segment 'NONE' white " on "
+    prompt_segment 'NONE' gray " ("
     prompt_segment 'NONE' default "${vcs_info_msg_0_}"
+    prompt_segment 'NONE' gray ")"
   fi
 }
 
@@ -98,7 +99,7 @@ prompt_newline() {
 
 # Command line
 prompt_command_line() {
-  prompt_segment 'NONE' white "$"
+  prompt_segment 'NONE' gray "$"
 }
 
 # Main prompt
