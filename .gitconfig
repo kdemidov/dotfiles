@@ -43,6 +43,9 @@
 	c = commit -v
 	cm = commit -m
 
+	ps = push
+	pl = pull
+
 	# Commit all changes
 	ca = !git add -A && git commit -av
 
@@ -60,9 +63,6 @@
 
 	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
-
-	ps = push
-	pl = pull
 
 	# Credit an author on the latest commit
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
