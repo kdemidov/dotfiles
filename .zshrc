@@ -11,6 +11,7 @@ sources+="$ZSH/prompt.zsh"
 sources+="$ZSH/aliases.zsh"
 sources+="$ZSH/functions.zsh"
 sources+="$ZSH/completion.zsh"
+sources+="$ZSH/third-party/iterm2_shell_integration.zsh"
 sources+="$ZSH/third-party/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # Try to include all sources
