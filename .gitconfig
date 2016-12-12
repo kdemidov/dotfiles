@@ -4,12 +4,12 @@
 	# Use vim for editing commit messages
 	editor = vim
 
-	# Make `git rebase` safer on OS X
-	# http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
+	# Ignore the ctime differences between the index and the working tree.
+	# It makes 'git rebase' safer on OS X (http://goo.gl/X2v1Ms)
 	trustctime = false
 
-	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
-	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+	# Prevent showing files whose names contain non-ASCII symbols as unversioned
+	# http://goo.gl/QlsSdp
 	precomposeunicode = false
 [alias]
 	a = add
@@ -136,7 +136,7 @@
 	mnemonicprefix = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
