@@ -6,6 +6,7 @@ alias sudo='sudo '
 
 # Shortcuts for some applications
 alias py='python'
+alias py3='python3'
 alias v='vim'
 alias a='ack'
 alias g='git'
