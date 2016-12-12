@@ -27,7 +27,7 @@ function +vi-git-aheadbehind() {
   local -a gitstatus
 
   ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l | tr -d ' ')
-  (( $ahead )) && gitstatus+=( "%B%F{blue}+${ahead}%f%b" )
+  (( $ahead )) && gitstatus+=( "%B%F{cyan}+${ahead}%f%b" )
 
   behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l | tr -d ' ')
   (( $behind )) && gitstatus+=( "%B%F{red}-${behind}%f%b" )
@@ -45,7 +45,7 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '%F{yellow}●%f'
 zstyle ':vcs_info:*' stagedstr '%F{green}●%f'
 zstyle ':vcs_info:*' formats '%F{blue}%b%f %u%c%m'
-zstyle ':vcs_info:*' actionformats '%b%F{blue}%b%f (%F{cyan}%a%f) %u%c%m'
+zstyle ':vcs_info:*' actionformats '%F{blue}%b%f (%F{magenta}%a%f) %u%c%m'
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-aheadbehind
 
 CURRENT_BG='NONE'
